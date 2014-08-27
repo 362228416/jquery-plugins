@@ -3,8 +3,25 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script type="text/javascript" src="../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../source/checkbox-plugin.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#selAll').cascadeAll('.checked-group1 :checkbox');
+        })
+    </script>
 </head>
 <body>
+
+<label for="selAll"><input type="checkbox" id="selAll"/>全选</label>
+
+<ul class="checked-group1">
+    <li><input type="checkbox" name=""/></li>
+    <li><input type="checkbox" name=""/></li>
+    <li><input type="checkbox" name=""/></li>
+    <li><input type="checkbox" name=""/></li>
+    <li><input type="checkbox" name=""/></li>
+</ul>
 
 </body>
 </html>
