@@ -10,10 +10,13 @@ $.Menu = function(container, items, handler) {
     html.push('</ul></div>');
     $('body').append(html.join(''));
 
+    var target;
+
     $(document).on('click', container, function(e){
         var left = e.clientX;
         var top = e.clientY;
         $('div.m-menu').css({'left': left + 'px', 'top': top + 'px'}).show();
+        target = e.target;
     }).on('click', function(e){
         if ($(container).index(e.target) == -1) {
             $('div.m-menu').hide();
@@ -21,7 +24,8 @@ $.Menu = function(container, items, handler) {
     }).on('click', 'div.m-menu li.m-item', function(e){
         var item = {
             id: $(e.target).attr('data-id'),
-            text: $(e.target).text()
+            text: $(e.target).text(),
+            target: target
         };
         handler && handler(item);
     })
