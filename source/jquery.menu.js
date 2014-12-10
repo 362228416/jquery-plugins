@@ -10,17 +10,19 @@ $.Menu = function(container, items, handler) {
     html.push('</ul></div>');
     $('body').append(html.join(''));
 
-    var target;
+    var target, onclick;
 
     $(document).on('click', container, function(e){
         var left = e.clientX;
         var top = e.clientY;
         $('div.m-menu').css({'left': left + 'px', 'top': top + 'px'}).show();
         target = e.target;
+        onclick = true;
     }).on('click', function(e){
-        if ($(container).index(e.target) == -1) {
+        if (!onclick) {
             $('div.m-menu').hide();
         }
+        onclick = false;
     }).on('click', 'div.m-menu li.m-item', function(e){
         var item = {
             id: $(e.target).attr('data-id'),
